@@ -15,7 +15,9 @@ var resetBoard = function () {
   currentPlayer = 'wht'
 };
 
+
 var attemptMove = function (row1, col1, row2, col2) {
+
   
 };
 

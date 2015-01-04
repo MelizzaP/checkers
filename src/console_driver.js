@@ -19,10 +19,23 @@ var displayBoard = function () {
   }  
 };
 
+var letterToNumber = function (x){
+  var position = ['a','b','c','d','e','f','g','h'];
+  for (i = 0; i < position.length; i++){
+    if (x === position[i]){
+     x = i;
+    }
+  }
+  return x;
+};
+
+
 var getMove = function (row1, col1, row2, col2) {
   //create a conditional for user inputting q, adds quit: true to move object
- move = {startRow: row1, startCol: col1, endRow: row2,endCol: col2}; 
- console.log(move);
+  row1 = letterToNumber(row1);
+  row2 = letterToNumber(row2);
+  move = {startRow: row1, startCol: col1, endRow: row2,endCol: col2}; 
+  console.log(move);
 };
 
 
