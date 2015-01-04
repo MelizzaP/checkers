@@ -14,3 +14,15 @@ var resetBoard = function () {
 
   currentPlayer = 'wht'
 };
+
+var attemptMove = function (row1, col1, row2, col2) {
+  
+};
+
+var makeMove = function (row1, col1, row2, col2){
+  
+};
+
+var removePiece = function (row, col){
+  
+};

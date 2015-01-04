@@ -16,5 +16,16 @@ var displayBoard = function () {
   console.log("-----------------------------------");
   for (var i = 0; i < board.length; i++) {
     console.log(numToChar[i] + " |" + board[i].join(" "));
-  }
+  }  
 };
+
+var getMove = function (row1, col1, row2, col2) {
+  //create a conditional for user inputting q, adds quit: true to move object
+ move = {startRow: row1, startCol: col1, endRow: row2,endCol: col2}; 
+ console.log(move);
+};
+
+
+
+
+
