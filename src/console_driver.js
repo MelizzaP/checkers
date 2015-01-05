@@ -32,12 +32,25 @@ var letterToNumber = function (x){
 
 var getMove = function (row1, col1, row2, col2) {
   //create a conditional for user inputting q, adds quit: true to move object
+  move = {startRow: row1, startCol: col1, endRow: row2,endCol: col2}; 
+  console.log(move);
   row1 = letterToNumber(row1);
   row2 = letterToNumber(row2);
   attemptMove(row1, col1, row2, col2);
-  move = {startRow: row1, startCol: col1, endRow: row2,endCol: col2}; 
-  console.log(move);
+  displayBoard();
+  console.log(currentPlayer + "'s turn!");
 };
+
+/* *************** TEST STUFF ******************* */
+resetBoard();
+displayBoard();
+getMove('a',1,'b',1); //invalid
+getMove('a',1,'b',0); //invalid
+getMove('c',1,'d',0); //valid
+getMove('f',0,'e',1); //valid
+getMove('d',0,'e',1); //invalid
+getMove('c',3,'d',2); //valid
+getMove('e',1,'d',2); //valid and capture
 
 
 

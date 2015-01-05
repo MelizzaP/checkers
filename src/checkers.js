@@ -12,32 +12,99 @@ var resetBoard = function () {
     ['red', ' X ', 'red', ' X ', 'red', ' X ', 'red', ' X ']
   ];
 
-  currentPlayer = 'wht'
+  currentPlayer = 'wht';
+  waitingPlayer = 'red';
 };
 
 
 var attemptMove = function (row1, col1, row2, col2) {
-  if (row1 +1 === row2 && col1 + 1 === col2){
-    console.log('valid move');
+  if (board[row2][col2] === currentPlayer){
+    console.log('invalid move');
+  }
+  else if (row1 + 1 === row2 && col1 + 1 === col2) {
+    if (board[row2][col2] === ' X '){
+      console.log('valid move');
+      makeMove(row1, col1, row2, col2);
+    }
+    else if (board[row2][col2] === waitingPlayer){
+      if (board[row2 + 1][col2 + 1] === ' X '){
+        console.log(currentPlayer + ' captured a checker!');
+        removePiece(row2, col2);
+        makeMove(row1, col1, row2 + 1, col2 + 1);
+      }
+      else {
+        console.log('invalid move');
+      }
+    };
   }
   else if (row1 + 1 === row2 && col1 - 1 === col2){
-    console.log('valid move');
+    if (board[row2][col2] === ' X '){
+      console.log('valid move');
+      makeMove(row1, col1, row2, col2);
+    }
+    else if (board[row2][col2] === waitingPlayer){
+      if (board[row2 + 1][col2 + 1] === ' X '){
+        console.log(currentPlayer + ' captured a checker!');
+        removePiece(row2, col2);
+        makeMove(row1, col1, row2 + 1, col2 - 1);
+      }
+      else {
+        console.log('invalid move');
+      }
+    };
   }
   else if (row1 - 1 === row2 && col1 - 1 === col2){
-    console.log('valid move');
+    if (board[row2][col2] === ' X '){
+      console.log('valid move');
+      makeMove(row1, col1, row2, col2);
+    }
+    else if (board[row2][col2] === waitingPlayer){
+      if (board[row2 + 1][col2 + 1] === ' X '){
+        console.log(currentPlayer + ' captured a checker!');
+        removePiece(row2, col2);
+        makeMove(row1, col1, row2 - 1, col2 - 1);
+      }
+      else {
+        console.log('invalid move');
+      }
+    };
   }
   else if (row1 - 1 === row2 && col1 + 1 === col2){
-    console.log('valid move');
+    if (board[row2][col2] === ' X '){
+      console.log('valid move');
+      makeMove(row1, col1, row2, col2);
+    }
+    else if (board[row2][col2] === waitingPlayer){
+      if (board[row2 + 1][col2 + 1] === ' X '){
+        console.log(currentPlayer + ' captured a checker!');
+        removePiece(row2, col2);
+        makeMove(row1, col1, row2 - 1, col2 + 1);
+      }
+      else {
+        console.log('invalid move');
+      }
+    };
   }
   else {
-    console.log('invalid move');
+    console.log('you smokin crack');
   };
 };
 
 var makeMove = function (row1, col1, row2, col2){
-  
+  if (currentPlayer === 'wht'){
+    board[row1][col1] = ' X ';
+    board[row2][col2] = 'wht';
+    currentPlayer = 'red';
+    waitingPlayer = 'wht';
+  }
+  else if (currentPlayer === 'red') {
+    board[row1][col1] = ' X ';
+    board[row2][col2] = 'red';
+    currentPlayer = 'wht';
+    waitingPlayer = 'red';
+  }
 };
 
 var removePiece = function (row, col){
-  
+  board[row][col] = ' X ';
 };
