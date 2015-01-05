@@ -33,24 +33,54 @@ var play = function (){
   console.log("Let's play some checkers!");
   resetBoard();
   displayBoard();
-}
-var getMove = function (row1, col1, row2, col2) {
+};
+
+$(document).on('boardChange', function(e) {
+  displayBoard();
+});
+
+$(document).on('pieceTaken', function(e, currentPlayer, waitingPlayer, row2, col2){
+  console.log(currentPlayer + " captured " + waitingPlayer + "'s piece at position: " + row2 + ', ' + col2);
+});
+
+$(document).on('invalidMove', function(e, error) {
+  console.log('Invalid move');
+  cosole.log(error);
+});
+
+
+var getMove = function () {
   //create a conditional for user inputting q, adds quit: true to move object
-  move = {startRow: row1, startCol: col1, endRow: row2,endCol: col2}; 
-  console.log(move);
-  row1 = letterToNumber(row1);
-  row2 = letterToNumber(row2);
+  console.log(currentPlayer + ', please make a move');
+  var move = new Object();
+  var row1 = letterToNumber(prompt("Starting Row"));
+  var col1 = parseInt(prompt("Starting Column"));
+  var row2 = letterToNumber(prompt("Ending Row"));
+  var col2 = parseInt(prompt("Ending Column"));
+  console.log(row1)
+  console.log(col1)
+/*
+  move.row1 = letterToNumber(row1);
+  move.col1 = parseInt(col1);
+  move.row2 = letterToNumber(row2);
+  move.col2 = parseInt(col2)
+  
+  console.log(move)
+*/
+/*
+  if (move[quit] === true){
+    console.log('quit game');
+    play();
+  }
+
   attemptMove(row1, col1, row2, col2);
   displayBoard();
   console.log(currentPlayer + "'s turn!");
+*/
 };
 
-var quit = function (){
-  console.log('Game quit');
-  resetBoard();
-}
-
 /* *************** TEST STUFF ******************* */
+/*
 play()
 getMove('a',1,'b',1); //invalid
 getMove('a',1,'b',0); //invalid
@@ -60,6 +90,7 @@ getMove('d',0,'e',1); //invalid
 getMove('c',3,'d',2); //valid
 getMove('e',1,'d',2); //valid and capture
 quit();
+*/
 
 
 
