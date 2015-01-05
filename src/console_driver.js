@@ -34,6 +34,7 @@ var getMove = function (row1, col1, row2, col2) {
   //create a conditional for user inputting q, adds quit: true to move object
   row1 = letterToNumber(row1);
   row2 = letterToNumber(row2);
+  attemptMove(row1, col1, row2, col2);
   move = {startRow: row1, startCol: col1, endRow: row2,endCol: col2}; 
   console.log(move);
 };

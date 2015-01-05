@@ -17,8 +17,21 @@ var resetBoard = function () {
 
 
 var attemptMove = function (row1, col1, row2, col2) {
-
-  
+  if (row1 +1 === row2 && col1 + 1 === col2){
+    console.log('valid move');
+  }
+  else if (row1 + 1 === row2 && col1 - 1 === col2){
+    console.log('valid move');
+  }
+  else if (row1 - 1 === row2 && col1 - 1 === col2){
+    console.log('valid move');
+  }
+  else if (row1 - 1 === row2 && col1 + 1 === col2){
+    console.log('valid move');
+  }
+  else {
+    console.log('invalid move');
+  };
 };
 
 var makeMove = function (row1, col1, row2, col2){
