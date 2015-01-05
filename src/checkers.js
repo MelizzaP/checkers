@@ -18,8 +18,10 @@ var resetBoard = function () {
 
 
 var attemptMove = function (row1, col1, row2, col2) {
+  var errors = [];
   if (board[row2][col2] === currentPlayer){
     console.log('invalid move');
+    errors.push("You cannot move onto your own pieces.")
   }
   else if (row1 + 1 === row2 && col1 + 1 === col2) {
     if (board[row2][col2] === ' X '){
@@ -34,6 +36,7 @@ var attemptMove = function (row1, col1, row2, col2) {
       }
       else {
         console.log('invalid move');
+        errors.push('You cannot move onto a piece')
       }
     };
   }
@@ -50,6 +53,7 @@ var attemptMove = function (row1, col1, row2, col2) {
       }
       else {
         console.log('invalid move');
+        errors.push('You cannot move onto a piece')
       }
     };
   }
@@ -65,7 +69,7 @@ var attemptMove = function (row1, col1, row2, col2) {
         makeMove(row1, col1, row2 - 1, col2 - 1);
       }
       else {
-        console.log('invalid move');
+        errors.push('You cannot move onto a piece')
       }
     };
   }
@@ -82,12 +86,15 @@ var attemptMove = function (row1, col1, row2, col2) {
       }
       else {
         console.log('invalid move');
+        errors.push('You cannot move onto a piece')
       }
     };
   }
   else {
     console.log('you smokin crack');
+    errors.push("That move is not allowed")
   };
+  return errors;
 };
 
 var makeMove = function (row1, col1, row2, col2){
@@ -107,4 +114,5 @@ var makeMove = function (row1, col1, row2, col2){
 
 var removePiece = function (row, col){
   board[row][col] = ' X ';
+  $(document).trigger('pieceTaken', currentPlayer, waitingPlayer, row, col);
 };

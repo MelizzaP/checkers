@@ -32,20 +32,45 @@ var letterToNumber = function (x){
 var play = function (){
   console.log("Let's play some checkers!");
   resetBoard();
-  displayBoard();
+  var winner = 'no one';
+  var turnCount = 0;
+  while (winner === 'no one'){
+    var move = getMove();
+    errors = attemptMove(move.row1, move.col1, move.row2, move.col2);
+    if (errors.length > 0){
+      $(document).trigger('invalidMove', errors);
+    }
+    else {
+      turnCount += 1; 
+      $(document).trigger('boardChange');
+      $(document).trigger('turns', turnCount);      
+    }
+    var winnerCheck = [];
+    winnerCheck = winnerCheck.concat.apply(winnerCheck, board)
+    if (winnerCheck.indexOf('red') < 0 ){
+      winner = 'wht'
+    }
+    if (winnerCheck.indexOf('wht') < 0){
+      winner = 'red'
+    }
+  }
 };
 
 $(document).on('boardChange', function(e) {
   displayBoard();
 });
 
-$(document).on('pieceTaken', function(e, currentPlayer, waitingPlayer, row2, col2){
-  console.log(currentPlayer + " captured " + waitingPlayer + "'s piece at position: " + row2 + ', ' + col2);
+$(document).on('turns', function(e, turnCount) {
+  console.log('Turns: ' + turnCount);
 });
 
-$(document).on('invalidMove', function(e, error) {
+$(document).on('pieceTaken', function(e, currentPlayer){
+  console.log(currentPlayer + " captured a checker!");
+});
+
+$(document).on('invalidMove', function(e, errors) {
   console.log('Invalid move');
-  cosole.log(error);
+  console.log(errors);
 });
 
 
