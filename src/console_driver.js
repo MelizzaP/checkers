@@ -52,31 +52,13 @@ $(document).on('invalidMove', function(e, error) {
 var getMove = function () {
   //create a conditional for user inputting q, adds quit: true to move object
   console.log(currentPlayer + ', please make a move');
-  var move = new Object();
-  var row1 = letterToNumber(prompt("Starting Row"));
-  var col1 = parseInt(prompt("Starting Column"));
-  var row2 = letterToNumber(prompt("Ending Row"));
-  var col2 = parseInt(prompt("Ending Column"));
-  console.log(row1)
-  console.log(col1)
-/*
-  move.row1 = letterToNumber(row1);
-  move.col1 = parseInt(col1);
-  move.row2 = letterToNumber(row2);
-  move.col2 = parseInt(col2)
-  
-  console.log(move)
-*/
-/*
-  if (move[quit] === true){
-    console.log('quit game');
-    play();
-  }
-
-  attemptMove(row1, col1, row2, col2);
-  displayBoard();
-  console.log(currentPlayer + "'s turn!");
-*/
+  var startRow = letterToNumber(prompt("Starting Row"));
+  var startCol = parseInt(prompt("Starting Column"));
+  var endRow = letterToNumber(prompt("Ending Row"));
+  var endCol = parseInt(prompt("Ending Column"));
+  var move = {row1: startRow, col1: startCol, row2: endRow, col2: endCol}
+  console.log(move);
+  return move;
 };
 
 /* *************** TEST STUFF ******************* */
