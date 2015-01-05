@@ -41,6 +41,11 @@ var getMove = function (row1, col1, row2, col2) {
   console.log(currentPlayer + "'s turn!");
 };
 
+var quit = function (){
+  console.log('Game quit');
+  resetBoard();
+}
+
 /* *************** TEST STUFF ******************* */
 resetBoard();
 displayBoard();
@@ -51,6 +56,7 @@ getMove('f',0,'e',1); //valid
 getMove('d',0,'e',1); //invalid
 getMove('c',3,'d',2); //valid
 getMove('e',1,'d',2); //valid and capture
+quit();
 
 
 
