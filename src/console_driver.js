@@ -29,7 +29,11 @@ var letterToNumber = function (x){
   return x;
 };
 
-
+var play = function (){
+  console.log("Let's play some checkers!");
+  resetBoard();
+  displayBoard();
+}
 var getMove = function (row1, col1, row2, col2) {
   //create a conditional for user inputting q, adds quit: true to move object
   move = {startRow: row1, startCol: col1, endRow: row2,endCol: col2}; 
@@ -47,8 +51,7 @@ var quit = function (){
 }
 
 /* *************** TEST STUFF ******************* */
-resetBoard();
-displayBoard();
+play()
 getMove('a',1,'b',1); //invalid
 getMove('a',1,'b',0); //invalid
 getMove('c',1,'d',0); //valid
